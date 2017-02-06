@@ -9,6 +9,13 @@ import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
 
+import br.com.srdoutorandroid.model.Token;
+import br.com.srdoutorandroid.model.UsuarioSession;
+import br.com.srdoutorandroid.util.JsonUtil;
+import br.com.srdoutorandroid.util.UsuarioSharedUtil;
+import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
+
 
 public class LoginService extends ValidadorCallBack {
 

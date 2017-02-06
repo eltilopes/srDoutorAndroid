@@ -10,8 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.srdoutorandroid.ListaMedicoActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linear_layout_login">
+
+        <EditText
+            android:id="@+id/email_login"
+            android:layout_width="wrap_content"
+            android:hint="email"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/senha_login"
+            android:hint="senha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:onClick="logar" />
+
+
+
+    </LinearLayout>
+
+    <include layout="@layout/progress_dialog"/>
+    
 </RelativeLayout>
