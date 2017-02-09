@@ -11,11 +11,13 @@ public class FragmentoFactory {
         INICIO("role");
 
         private String role;
+        private String label;
 
         private NavegacaoEnum( String role) {
             this.role = role;
         }
         public String getRole() { return role; }
+        public String getLabel() { return label; }
 /**
         INICIO(FragmentoDashboard.class, "Início", R.drawable.ic_inicio_black),
         CHAMADO_LISTA(FragmentoChamadoLista.class, "Chamados", R.drawable.ic_chamado_black, "chamado_read"),

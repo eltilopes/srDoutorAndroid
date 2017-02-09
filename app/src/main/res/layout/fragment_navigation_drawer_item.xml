@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    style="@style/navegacao">
+
+    <ImageView android:id="@+id/icon1"
+        android:src="@drawable/ic_mensagem_black"
+        style="@style/navegacao_icone"
+        android:tint="#000"/>
+
+    <TextView android:id="@+id/text1"
+        android:layout_toRightOf="@+id/icon1"
+        android:text="Serviços" />
+
+    <TextView android:id="@+id/text2"
+        android:text="5"
+        android:visibility="visible"
+        android:layout_alignTop="@+id/icon1"
+        android:layout_toLeftOf="@+id/text1"
+        android:layout_toStartOf="@+id/text1"
+        />
+
+</RelativeLayout>

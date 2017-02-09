@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="cor_navegacao_texto">#333333</color>
+    <color name="cor_navegacao_texto_hover">#FFFFFF</color>
+    <color name="cor_navegacao_fundo_hover">#DDDDDD</color>
+    <color name="cor_navegacao_borda">#DDDDDD</color>
 </resources>

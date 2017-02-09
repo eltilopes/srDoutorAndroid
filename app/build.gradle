@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "24.0.3"
+    useLibrary 'org.apache.http.legacy'
+    
     defaultConfig {
         applicationId "br.com.srdoutorandroid"
         minSdkVersion 19
