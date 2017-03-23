@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "24.0.3"
+    buildToolsVersion "25.0.0"
     useLibrary 'org.apache.http.legacy'
     
     defaultConfig {
@@ -12,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -19,6 +20,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -33,5 +35,19 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:design:25.1.1'
+    compile ('com.google.android.gms:play-services:9.6.1'){
+        exclude group: 'com.google.android.gms:play-services-auth:9.6.1'
+    }
+    compile 'com.google.firebase:firebase-core:9.6.1'
+    compile 'com.google.firebase:firebase-auth:9.6.1'
+    compile ('com.facebook.android:facebook-android-sdk:4.+'){
+    }
+    compile ('com.facebook.android:account-kit-sdk:4.+'){
+
+    }
+    compile ('com.facebook.android:audience-network-sdk:4.+'){
+
+    }
     testCompile 'junit:junit:4.12'
 }
+apply plugin: 'com.google.gms.google-services'

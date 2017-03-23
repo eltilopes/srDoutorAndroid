@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -43,7 +45,7 @@ public class CustomizedListView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-
+        FirebaseAuth.getInstance().signOut();
         ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 
         XMLParser parser = new XMLParser();

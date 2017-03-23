@@ -16,4 +16,10 @@
 
     <string name="error_ler_mensagem">Erro ao informa leitura da mensagem</string>
     <string name="campo_obrigatorio">Campo obrigatório</string>
+
+    <string name="facebook_app_id">170132490146220</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">4a055784ddc5bbc34ed57bef90e702c3</string>
+    <string name="app_name_facebook">SrDoutor</string>
+
+    <string name="fb_login_protocol_scheme">fb170132490146220</string>
 </resources>
