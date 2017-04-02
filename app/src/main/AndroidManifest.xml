@@ -5,9 +5,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -17,7 +19,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListaMedicoActivity">
+        <activity android:name=".ListaMedicoActivity"></activity>
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,21 +41,34 @@
             android:name=".activities.CustomizedListView"
             android:theme="@style/AppTheme" />
         <meta-data
+            android:name="AA_MODELS"
+            android:value="br.com.srdoutorandroid.model.Medico" />
+        <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDqC1nXOyPmwRDl5WGfG6rE8OToNWxb6EU"/>
+            android:value="AIzaSyDqC1nXOyPmwRDl5WGfG6rE8OToNWxb6EU" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-
-        <meta-data android:name="com.facebook.accountkit.ClientToken"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.accountkit.ClientToken"
             android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
-
-        <meta-data android:name="com.facebook.accountkit.ApplicationName"
-            android:value="@string/app_name_facebook"/>
-
+        <meta-data
+            android:name="com.facebook.accountkit.ApplicationName"
+            android:value="@string/app_name_facebook" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".activities.ListaInicioActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.PrimeiraVezActivity"></activity>
     </application>
 
 </manifest>

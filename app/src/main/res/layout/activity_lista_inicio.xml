@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_lista_inicio"
+    android:layout_gravity="center"
+    tools:context="br.com.srdoutorandroid.activities.ListaInicioActivity"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:adjustViewBounds="false"
+        android:src="@drawable/splash07"></ImageView>
+</RelativeLayout>

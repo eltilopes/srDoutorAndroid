@@ -46,6 +46,7 @@ public class ExecutorMetodoService {
                     break;
                 } catch (InvocationTargetException e) {
                     if(e.getCause() instanceof RetrofitError) {
+                        e.printStackTrace();
                         throw (RetrofitError) e.getCause();
                     } else  if(e.getCause() instanceof AcessoNegadoException){
                         throw (AcessoNegadoException) e.getCause();
