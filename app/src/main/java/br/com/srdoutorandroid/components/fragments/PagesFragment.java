@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import br.com.srdoutorandroid.R;
 
-public class PagesFragment extends Fragment {
+public class PagesFragment extends Fragment  {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
@@ -50,4 +50,6 @@ public class PagesFragment extends Fragment {
         }
         return view;
     }
+
+
 }
