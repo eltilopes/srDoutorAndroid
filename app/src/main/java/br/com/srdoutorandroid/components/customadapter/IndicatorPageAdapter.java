@@ -28,17 +28,38 @@ public class IndicatorPageAdapter {
                 if(i==selectedPage)
                 {
                     try {
-                        dot.setImageResource(R.drawable.circle_full);
+                        dot.setImageResource(R.drawable.rectangle_full);
                     } catch (Exception e)
                     {
                         Log.d("IndicatorPageAdapter","not locate identifier");
                     }
                 }else
                 {
-                    dot.setImageResource(R.drawable.circle_empty);
+                    dot.setImageResource(R.drawable.rectangle_empty);
                 }
                 main_holder.addView(dot);
             }
             main_holder.invalidate();
         }
+
+    public static void verificarPaginator(ImageView imageViewTela1, ImageView imageViewTela2, ImageView imageViewTela3, int selectedPage, int count) {
+        switch(selectedPage) {
+            case 0:
+                imageViewTela1.setBackgroundResource(R.drawable.rectangle_full);
+                imageViewTela2.setBackgroundResource(R.drawable.rectangle_empty);
+                imageViewTela3.setBackgroundResource(R.drawable.rectangle_empty);
+                break;
+            case 1:
+                imageViewTela1.setBackgroundResource(R.drawable.rectangle_empty);
+                imageViewTela2.setBackgroundResource(R.drawable.rectangle_full);
+                imageViewTela3.setBackgroundResource(R.drawable.rectangle_empty);
+                break;
+            case 2:
+                imageViewTela1.setBackgroundResource(R.drawable.rectangle_empty);
+                imageViewTela2.setBackgroundResource(R.drawable.rectangle_empty);
+                imageViewTela3.setBackgroundResource(R.drawable.rectangle_full);
+                break;
+        }
+
     }
+}
