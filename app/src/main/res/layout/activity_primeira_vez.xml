@@ -7,12 +7,28 @@
     tools:context="br.com.srdoutorandroid.activities.PrimeiraVezActivity">
 
 
+        <Button
+            android:id="@+id/buttonComecar"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="160dp"
+            android:textAlignment="center"
+            android:textColor="@color/cor_navegacao_fundo_hover"
+            android:background="@color/colorPrimary"
+            android:text="Começar"
+            android:onClick="pular"/>
+
         <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:clipChildren="false">
+
 
 
 
@@ -38,27 +54,27 @@
 
                 <ImageView
                     android:id="@+id/imageViewTela1"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp" />
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp" />
 
                 <ImageView
                     android:id="@+id/imageViewTela2"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp" />
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp" />
 
                 <ImageView
                     android:id="@+id/imageViewTela3"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="3dp"/>
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"/>
         </LinearLayout>
 
         <Button

@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
@@ -23,6 +25,8 @@ import br.com.srdoutorandroid.util.ConexaoUtil;
 import br.com.srdoutorandroid.util.ContaGoogleUtil;
 import br.com.srdoutorandroid.util.ToastUtil;
 import br.com.srdoutorandroid.webservice.endpoint.ExecutorMetodoService;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit.RetrofitError;
 
 
@@ -31,17 +35,26 @@ import retrofit.RetrofitError;
  */
 public class SplashActivity extends Activity  {
     private BancoController bdController ;
-    private ImageView splashImageView;
     private ContaGoogleUtil contaGoogleUtil;
     private List<Medico> medicos ;
+    private Activity splashActivity ;
+    @Bind(R.id.splashImageView)
+    ImageView splashImageView;
 
+    @Bind(R.id.splashProgressBar)
+    ProgressBar progressBar;
+    int progressStatus = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bdController = new BancoController(getBaseContext());
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
-        splashImageView = (ImageView) findViewById(R.id.SplashImageView);
+        ButterKnife.bind(this);
+        splashActivity = this;
+        splashImageView.setBackgroundResource(R.drawable.splash01);
+        progressBar.setProgress(10);
+        progressBar.setVisibility(View.VISIBLE);
         primeiraVezApp();
         Configuration.Builder config = new Configuration.Builder(this);
         config.addModelClasses(Medico.class);
@@ -50,10 +63,15 @@ public class SplashActivity extends Activity  {
     }
 
     private void primeiraVezApp() {
-        if(!bdController.getPrimeiroAcesso()) {
+        if(bdController.getPrimeiroAcesso()) {
             bdController.inserePrimeiroAcesso(true);
             direcionarTelaPrimeiraVez();
-        }else splashImageView.setBackgroundResource(R.drawable.splash01);
+        }else {
+            splashImageView.setBackgroundResource(R.drawable.splash02);
+            progressBar.setProgress(30);
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -74,12 +92,20 @@ public class SplashActivity extends Activity  {
 
     public void carregarListaMedicos() {
         medicos = new ArrayList<Medico>();
-        if (ConexaoUtil.isConexao(this)) {
+        if (ConexaoUtil.isConexao(splashActivity)) {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... params) {
                     try {
                         medicos = ExecutorMetodoService.invoke(new MedicoService(SplashActivity.this), "buscarMedicos");
+                        if(medicos.isEmpty()) {
+                            splashActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.show(SplashActivity.this, "Sem Consultas Disponiveis", ToastUtil.WARNING);
+                                }
+                            });
+                        }
                     } catch (RetrofitError error) {
                         //application.createEventAnalytics(getString(R.string.analytics_categoria_erro), BUSCAR_CHAMADO_WEB_SERVICE, null);
                         ToastUtil.showErro(SplashActivity.this, error.getResponse());
@@ -90,9 +116,12 @@ public class SplashActivity extends Activity  {
                     return null;
                 }
             }.execute();
-
         }
+
         splashImageView.setBackgroundResource(R.drawable.splash02);
+        progressBar.setProgress(50);
+        progressBar.setVisibility(View.VISIBLE);
+
     }
 
 }

@@ -31,6 +31,9 @@ public class PrimeiraVezActivity extends FragmentActivity  {
     @Bind(R.id.buttonPular)
     Button buttonPular;
 
+    @Bind(R.id.buttonComecar)
+    Button buttonComecar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,7 @@ public class PrimeiraVezActivity extends FragmentActivity  {
         imageViewTela1.setBackgroundResource(R.drawable.rectangle_full);
         imageViewTela2.setBackgroundResource(R.drawable.rectangle_empty);
         imageViewTela3.setBackgroundResource(R.drawable.rectangle_empty);
+        buttonComecar.setVisibility(View.INVISIBLE);
         setPagesTable();
     }
 
@@ -67,7 +71,7 @@ public class PrimeiraVezActivity extends FragmentActivity  {
     }
 
     public void updateIndicator(int currentPage) {
-        IndicatorPageAdapter.verificarPaginator(imageViewTela1,imageViewTela2,imageViewTela3,currentPage, 3);
+        IndicatorPageAdapter.verificarPaginator(imageViewTela1,imageViewTela2,imageViewTela3,buttonComecar,currentPage, 3);
     }
 
     public void pular(View view) {
