@@ -38,12 +38,14 @@ public class SplashActivity extends Activity  {
     private ContaGoogleUtil contaGoogleUtil;
     private List<Medico> medicos ;
     private Activity splashActivity ;
+    private int progressStatus = 0;
+    private int timeSleep = 100;
+    private int iterador = 10;
     @Bind(R.id.splashImageView)
     ImageView splashImageView;
 
     @Bind(R.id.splashProgressBar)
     ProgressBar progressBar;
-    int progressStatus = 0;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +54,11 @@ public class SplashActivity extends Activity  {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         splashActivity = this;
-        splashImageView.setBackgroundResource(R.drawable.splash01);
-        progressBar.setProgress(10);
-        progressBar.setVisibility(View.VISIBLE);
-        primeiraVezApp();
+        verificarPrimeiraVezApp();
         Configuration.Builder config = new Configuration.Builder(this);
         config.addModelClasses(Medico.class);
         ActiveAndroid.initialize(config.create());
-        carregarListaMedicos();
+        verificarListaMedicos();
     }
 
     private void primeiraVezApp() {
@@ -68,10 +67,73 @@ public class SplashActivity extends Activity  {
             direcionarTelaPrimeiraVez();
         }else {
             splashImageView.setBackgroundResource(R.drawable.splash02);
-            progressBar.setProgress(30);
-            progressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private class PrimeiraVezAppLauncher extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            for(int i=0;i<iterador;i++) {
+                doSomeTasks();
+            }
+            return true;
         }
 
+        protected final void onPostExecute(Boolean paramBoolean) {
+            primeiraVezApp();
+        }
+
+        private void doSomeTasks() {
+            try {
+                Thread.sleep(timeSleep);
+                progressStatus =  progressStatus + 3;
+                progressBar.setProgress(progressStatus);
+                progressBar.setVisibility(View.VISIBLE);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private class ListaMedicosLauncher extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            for(int i=0;i<iterador;i++) {
+                doSomeTasks();
+            }
+
+            return true;
+        }
+
+        protected final void onPostExecute(Boolean paramBoolean) {
+            carregarListaMedicos();
+        }
+
+        private void doSomeTasks() {
+            try {
+                Thread.sleep(timeSleep);
+                progressStatus =  progressStatus + 3;
+                progressBar.setProgress(progressStatus);
+                progressBar.setVisibility(View.VISIBLE);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void verificarPrimeiraVezApp() {
+        splashImageView.setBackgroundResource(R.drawable.splash01);
+        progressBar.setProgress(progressStatus);
+        progressBar.setVisibility(View.VISIBLE);
+        PrimeiraVezAppLauncher launcher = new PrimeiraVezAppLauncher();
+        launcher.execute(new Void[0]);
+    }
+
+    private void verificarListaMedicos() {
+        ListaMedicosLauncher launcher = new ListaMedicosLauncher();
+        launcher.execute(new Void[0]);
     }
 
     @Override
@@ -85,6 +147,7 @@ public class SplashActivity extends Activity  {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK);
+        //intent.putExtra("medicos", medicos);
         startActivity(intent);
         finish();
     }
@@ -118,8 +181,7 @@ public class SplashActivity extends Activity  {
             }.execute();
         }
 
-        splashImageView.setBackgroundResource(R.drawable.splash02);
-        progressBar.setProgress(50);
+        splashImageView.setBackgroundResource(R.drawable.splash03);
         progressBar.setVisibility(View.VISIBLE);
 
     }
