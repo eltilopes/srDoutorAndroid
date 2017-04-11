@@ -3,6 +3,7 @@
     <color name="colorPrimary">#66A98F</color>
     <color name="colorPrimaryDark">#5B9980</color>
     <color name="colorAccent">#5B8BBF</color>
+    <color name="textColorPrimary">#ffffff</color>
 
     <color name="cor_navegacao_texto">#333333</color>
     <color name="cor_navegacao_texto_hover">#FFFFFF</color>

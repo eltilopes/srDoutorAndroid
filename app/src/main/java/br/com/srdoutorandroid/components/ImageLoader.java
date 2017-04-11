@@ -21,21 +21,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import br.com.srdoutorandroid.R;
-import br.com.srdoutorandroid.util.Utils;
+import br.com.srdoutorandroid.util.UtilsIO;
 
-/**
- * Created by elton on 08/02/2017.
- */
 
 public class ImageLoader {
+
     MemoryCache memoryCache=new MemoryCache();
     FileCache fileCache;
-    private Map<ImageView, String> imageViews= Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
+    private Map<ImageView, String> imageViews=Collections.synchronizedMap(new WeakHashMap<ImageView, String>());
     ExecutorService executorService;
 
     public ImageLoader(Context context){
         fileCache=new FileCache(context);
-        executorService= Executors.newFixedThreadPool(5);
+        executorService=Executors.newFixedThreadPool(5);
     }
 
     final int stub_id = R.drawable.no_image;
@@ -77,7 +75,7 @@ public class ImageLoader {
             conn.setInstanceFollowRedirects(true);
             InputStream is=conn.getInputStream();
             OutputStream os = new FileOutputStream(f);
-            Utils.CopyStream(is, os);
+            UtilsIO.CopyStream(is, os);
             os.close();
             bitmap = decodeFile(f);
             return bitmap;

@@ -22,4 +22,21 @@
     <string name="app_name_facebook">SrDoutor</string>
 
     <string name="fb_login_protocol_scheme">fb170132490146220</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="nav_item_home">Home</string>
+    <string name="nav_item_friends">Friends</string>
+    <string name="nav_item_notifications">Messages</string>
+    <string-array name="nav_drawer_labels">
+        <item>@string/nav_item_home</item>
+        <item>@string/nav_item_friends</item>
+        <item>@string/nav_item_notifications</item>
+    </string-array>
+    <string-array name="especialidadeArrays">
+        <item>Selecione a Especialidade</item>
+        <item>Gineco</item>
+        <item>Fisio</item>
+        <item>Terapeuta</item>
+        <item>Geral</item>
+    </string-array>
 </resources>

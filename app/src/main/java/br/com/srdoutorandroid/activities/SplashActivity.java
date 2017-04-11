@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class SplashActivity extends Activity  {
     private int progressStatus = 0;
     private int timeSleep = 100;
     private int iterador = 10;
+    private int iteradorProgress = 2;
     @Bind(R.id.splashImageView)
     ImageView splashImageView;
 
@@ -87,7 +89,7 @@ public class SplashActivity extends Activity  {
         private void doSomeTasks() {
             try {
                 Thread.sleep(timeSleep);
-                progressStatus =  progressStatus + 3;
+                progressStatus =  progressStatus + iteradorProgress;
                 progressBar.setProgress(progressStatus);
                 progressBar.setVisibility(View.VISIBLE);
             } catch (InterruptedException e) {
@@ -114,7 +116,7 @@ public class SplashActivity extends Activity  {
         private void doSomeTasks() {
             try {
                 Thread.sleep(timeSleep);
-                progressStatus =  progressStatus + 3;
+                progressStatus =  progressStatus + iteradorProgress;
                 progressBar.setProgress(progressStatus);
                 progressBar.setVisibility(View.VISIBLE);
             } catch (InterruptedException e) {
@@ -134,6 +136,7 @@ public class SplashActivity extends Activity  {
     private void verificarListaMedicos() {
         ListaMedicosLauncher launcher = new ListaMedicosLauncher();
         launcher.execute(new Void[0]);
+
     }
 
     @Override
@@ -147,7 +150,13 @@ public class SplashActivity extends Activity  {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK);
-        //intent.putExtra("medicos", medicos);
+        startActivity(intent);
+        finish();
+    }
+
+    public void direcionarListaMedicos(){
+        Intent intent = new Intent(this, ListaInicioActivity.class);
+        intent.putExtra("medicos",(Serializable) medicos);
         startActivity(intent);
         finish();
     }
@@ -183,6 +192,7 @@ public class SplashActivity extends Activity  {
 
         splashImageView.setBackgroundResource(R.drawable.splash03);
         progressBar.setVisibility(View.VISIBLE);
+        direcionarListaMedicos();
 
     }
 
