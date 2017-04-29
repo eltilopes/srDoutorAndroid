@@ -98,7 +98,7 @@
 			android:id="@+id/imageViewTela1"
 			android:layout_width="8dp"
 			android:layout_height="8dp"
-			android:layout_marginBottom="8dp"
+            android:layout_marginTop="15dp"
 			android:layout_marginLeft="4dp"
 			android:layout_marginRight="4dp"
 			android:src="@drawable/estrela_vazada"/>
@@ -107,7 +107,7 @@
 			android:id="@+id/imageViewTela2"
 			android:layout_width="8dp"
 			android:layout_height="8dp"
-			android:layout_marginBottom="8dp"
+            android:layout_marginTop="15dp"
 			android:layout_marginLeft="4dp"
 			android:layout_marginRight="4dp"
 			android:src="@drawable/estrela_cheia" />
@@ -116,7 +116,7 @@
 			android:id="@+id/imageViewTela3"
 			android:layout_width="8dp"
 			android:layout_height="8dp"
-			android:layout_marginBottom="8dp"
+            android:layout_marginTop="15dp"
 			android:layout_marginLeft="4dp"
 			android:layout_marginRight="4dp"
 			android:src="@drawable/estrela_cheia"/>
@@ -133,62 +133,68 @@
         android:elevation="5dp">
         <TextView
             android:id="@+id/segunda"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/segunda"
+            android:textSize="8sp"
             android:textColor="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/terca"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/terca"
+            android:textSize="8sp"
             android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/quarta"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/quarta"
+            android:textSize="8sp"
             android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/quinta"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/quinta"
+            android:textSize="8sp"
             android:textColor="@color/cor_navegacao_fundo_hover"/>
 
         <TextView
             android:id="@+id/sexta"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/sexta"
+            android:textSize="8sp"
             android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/sabado"
-            android:layout_width="8dp"
-            android:layout_height="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/sabado"
+            android:textSize="8sp"
             android:textColor="@color/cor_navegacao_fundo_hover"/>
 
 
