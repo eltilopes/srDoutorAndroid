@@ -30,7 +30,9 @@ public class ProgressDialogAsyncTask extends AsyncTask<Boolean, Integer, Void> {
         this.activity = activity;
         this.progressActivity = progressActivity;
         this.layout = layout;
+
     }
+
 
     public ProgressDialogAsyncTask(Activity activity, IProgressActivity progressActivity) {
         super();
@@ -41,6 +43,7 @@ public class ProgressDialogAsyncTask extends AsyncTask<Boolean, Integer, Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
         if(this.activity != null)
             ViewUtil.escondeTeclado(this.activity);
         this.activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
@@ -57,6 +60,7 @@ public class ProgressDialogAsyncTask extends AsyncTask<Boolean, Integer, Void> {
     protected Void doInBackground(Boolean... params) {
         if(progressActivity != null)
             progressActivity.executaProgressoDialog();
+
         return null;
     }
 

@@ -11,10 +11,6 @@ import com.activeandroid.annotation.Table;
 
 import java.io.Serializable;
 
-/**
- * Created by raphael.bruno on 20/07/2015.
- */
-
 @Table(name = "medico", id = "_id")
 public class Medico extends Model implements Serializable {
 
@@ -32,6 +28,9 @@ public class Medico extends Model implements Serializable {
 
     @Column(name = "cpf")
     private String cpf;
+
+    @Column(name = "urlFoto")
+    private String urlFoto;
 
 
     @Override
@@ -56,11 +55,54 @@ public class Medico extends Model implements Serializable {
     public Medico() {
     }
 
-    public Medico(Integer id, String nome, String email, String crm, String cpf) {
+    public Medico(Integer id, String nome, String email, String crm, String cpf, String urlFoto) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.crm = crm;
         this.cpf = cpf;
+        this.urlFoto = urlFoto;
     }
+    public Integer getIdMedico() { return id; }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+
 }

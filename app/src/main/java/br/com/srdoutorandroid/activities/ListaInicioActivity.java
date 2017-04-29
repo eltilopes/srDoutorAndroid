@@ -18,19 +18,16 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import br.com.srdoutorandroid.R;
-import br.com.srdoutorandroid.components.XMLParser;
 import br.com.srdoutorandroid.components.customadapter.LazyAdapter;
+import br.com.srdoutorandroid.model.Medico;
 
 
 /**
@@ -58,11 +55,16 @@ import br.com.srdoutorandroid.components.customadapter.LazyAdapter;
         private Spinner spinnerEspecialidade;
         private Toolbar mToolbar;
         private FragmentDrawer drawerFragment;
+        private List<Medico> medicos ;
 
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
 
             super.onCreate(savedInstanceState);
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                medicos = (List<Medico>) getIntent().getSerializableExtra("medicos"); //Obtaining data
+            }
             setContentView(R.layout.activity_lista_inicio);
             setDateTimeField();
             setListenerOnSpinnerItemSelection();
@@ -91,21 +93,14 @@ import br.com.srdoutorandroid.components.customadapter.LazyAdapter;
         }
 
     private void getListaAtendimentos() {
-        XMLParser parser = new XMLParser();
-        String xml = parser.getXmlFromUrl(URL); // getting XML from URL
-        Document doc = parser.getDomElement(xml); // getting DOM element
-
-        NodeList nl = doc.getElementsByTagName(KEY_SONG);
-        // looping through all song nodes <song>
-        for (int i = 0; i < nl.getLength(); i++) {
+        for (Medico medico : medicos) {
             // creating new HashMap
             HashMap<String, String> map = new HashMap<String, String>();
-            Element e = (Element) nl.item(i);
-            map.put(KEY_ID, parser.getValue(e, KEY_ID));
-            map.put(KEY_TITLE, parser.getValue(e, KEY_TITLE));
-            map.put(KEY_ARTIST, parser.getValue(e, KEY_ARTIST));
-            map.put(KEY_DURATION, parser.getValue(e, KEY_DURATION));
-            map.put(KEY_THUMB_URL, parser.getValue(e, KEY_THUMB_URL));
+            map.put(KEY_ID, medico.getIdMedico().toString());
+            map.put(KEY_TITLE, medico.getNome());
+            map.put(KEY_ARTIST, medico.getCrm());
+            map.put(KEY_DURATION, medico.getCpf());
+            map.put(KEY_THUMB_URL, medico.getUrlFoto());
             songsList.add(map);
         }
     }

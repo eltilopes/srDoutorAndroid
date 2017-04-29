@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -41,10 +46,14 @@ public class ImageLoader {
     {
         imageViews.put(imageView, url);
         Bitmap bitmap=memoryCache.get(url);
-        if(bitmap!=null)
-            imageView.setImageBitmap(bitmap);
-        else
-        {
+
+        if(bitmap!=null) {
+            Bitmap drawableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+            Canvas canvas = new Canvas(drawableBitmap);
+            Paint paint = new Paint();
+            paint.setColor(Color.BLUE);
+            imageView.setImageBitmap(drawableBitmap);
+        }else{
             queuePhoto(url, imageView);
             imageView.setImageResource(stub_id);
         }
@@ -157,13 +166,20 @@ public class ImageLoader {
         Bitmap bitmap;
         PhotoToLoad photoToLoad;
         public BitmapDisplayer(Bitmap b, PhotoToLoad p){bitmap=b;photoToLoad=p;}
+        Bitmap drawableBitmap;
         public void run()
         {
             if(imageViewReused(photoToLoad))
                 return;
-            if(bitmap!=null)
-                photoToLoad.imageView.setImageBitmap(bitmap);
-            else
+            if(bitmap!=null) {
+                drawableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
+                BitmapShader shader = new BitmapShader(drawableBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+                Paint paint = new Paint();
+                paint.setShader(shader);
+                Canvas c = new Canvas(drawableBitmap);
+                c.drawCircle(drawableBitmap.getWidth() / 2, drawableBitmap.getHeight() / 2, drawableBitmap.getWidth() / 2, paint);
+                photoToLoad.imageView.setImageBitmap(drawableBitmap);
+            }else
                 photoToLoad.imageView.setImageResource(stub_id);
         }
     }

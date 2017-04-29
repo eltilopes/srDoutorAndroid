@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.srdoutorandroid.R;
+import br.com.srdoutorandroid.components.ProgressDialogAsyncTask;
+import br.com.srdoutorandroid.exception.AcessoNegadoException;
 import br.com.srdoutorandroid.model.Medico;
 import br.com.srdoutorandroid.service.MedicoService;
 import br.com.srdoutorandroid.service.bd.BancoController;
@@ -29,23 +32,25 @@ import br.com.srdoutorandroid.webservice.endpoint.ExecutorMetodoService;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 /**
  * Created by elton on 24/09/2016.
  */
-public class SplashActivity extends Activity  {
+public class SplashActivity extends Activity implements ProgressDialogAsyncTask.IProgressActivity  {
     private BancoController bdController ;
     private ContaGoogleUtil contaGoogleUtil;
     private List<Medico> medicos ;
     private Activity splashActivity ;
     private int progressStatus = 0;
-    private int timeSleep = 100;
+    private int timeSleep = 150;
     private int iterador = 10;
-    private int iteradorProgress = 2;
+    private int iteradorProgress = 5;
     @Bind(R.id.splashImageView)
     ImageView splashImageView;
-
+    @Bind(R.id.dialog_progress)
+    RelativeLayout layoutProgress;
     @Bind(R.id.splashProgressBar)
     ProgressBar progressBar;
     @Override
@@ -70,6 +75,39 @@ public class SplashActivity extends Activity  {
         }else {
             splashImageView.setBackgroundResource(R.drawable.splash02);
         }
+    }
+
+    @Override
+    public void executaProgressoDialog() {
+        try {
+            medicos = ExecutorMetodoService.invoke(new MedicoService(SplashActivity.this), "buscarMedicos");
+            if(medicos.isEmpty()) {
+                splashActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ToastUtil.show(SplashActivity.this, "Sem Consultas Disponiveis", ToastUtil.WARNING);
+                    }
+                });
+            }
+            direcionarListaMedicos();
+        } catch (RetrofitError error) {
+            final Response resp = error.getResponse();
+            ToastUtil.showErro(this, resp);
+        } catch (AcessoNegadoException erro) {
+            ToastUtil.show(SplashActivity.this, getResources().getString(R.string.error_acesso_negado), ToastUtil.WARNING);
+        } catch (RuntimeException erro) {
+            ToastUtil.show(SplashActivity.this, getResources().getString(R.string.error_dados_invalidos), ToastUtil.WARNING);
+        }
+    }
+
+    @Override
+    public boolean isAddedValidation() {
+        return true;
+    }
+
+    @Override
+    public void onPostExecute() {
+
     }
 
     private class PrimeiraVezAppLauncher extends AsyncTask<Void, Void, Boolean> {
@@ -102,7 +140,7 @@ public class SplashActivity extends Activity  {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            for(int i=0;i<iterador;i++) {
+            for(int i=0;i<100-progressStatus;i++) {
                 doSomeTasks();
             }
 
@@ -131,6 +169,7 @@ public class SplashActivity extends Activity  {
         progressBar.setVisibility(View.VISIBLE);
         PrimeiraVezAppLauncher launcher = new PrimeiraVezAppLauncher();
         launcher.execute(new Void[0]);
+        progressStatus = progressBar.getProgress();
     }
 
     private void verificarListaMedicos() {
@@ -164,36 +203,14 @@ public class SplashActivity extends Activity  {
 
     public void carregarListaMedicos() {
         medicos = new ArrayList<Medico>();
-        if (ConexaoUtil.isConexao(splashActivity)) {
-            new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected Void doInBackground(Void... params) {
-                    try {
-                        medicos = ExecutorMetodoService.invoke(new MedicoService(SplashActivity.this), "buscarMedicos");
-                        if(medicos.isEmpty()) {
-                            splashActivity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ToastUtil.show(SplashActivity.this, "Sem Consultas Disponiveis", ToastUtil.WARNING);
-                                }
-                            });
-                        }
-                    } catch (RetrofitError error) {
-                        //application.createEventAnalytics(getString(R.string.analytics_categoria_erro), BUSCAR_CHAMADO_WEB_SERVICE, null);
-                        ToastUtil.showErro(SplashActivity.this, error.getResponse());
-                    } catch (Exception error) {
-                        ToastUtil.show(SplashActivity.this, error.getMessage(), ToastUtil.WARNING);
-                        error.printStackTrace();
-                    }
-                    return null;
-                }
-            }.execute();
-        }
-
         splashImageView.setBackgroundResource(R.drawable.splash03);
         progressBar.setVisibility(View.VISIBLE);
-        direcionarListaMedicos();
-
+        ProgressDialogAsyncTask task = new ProgressDialogAsyncTask(this, null, this);
+        if (!ConexaoUtil.isConexao(getApplicationContext())) {
+            ToastUtil.show(this, getResources().getString(R.string.error_conexao_internet), ToastUtil.ERROR);
+        } else  {
+            task.execute();
+        }
     }
 
 }

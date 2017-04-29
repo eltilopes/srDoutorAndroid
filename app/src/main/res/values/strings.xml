@@ -21,6 +21,13 @@
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">4a055784ddc5bbc34ed57bef90e702c3</string>
     <string name="app_name_facebook">SrDoutor</string>
 
+    <string name="segunda"><b>S</b></string>
+    <string name="terca"><b>T</b></string>
+    <string name="quarta"><b>Q</b></string>
+    <string name="quinta"><b>Q</b></string>
+    <string name="sexta"><b>S</b></string>
+    <string name="sabado"><b>S</b></string>
+
     <string name="fb_login_protocol_scheme">fb170132490146220</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>

@@ -23,4 +23,6 @@
         android:id="@+id/splashImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ImageView>
+
+    <include layout="@layout/progress_dialog"/>
 </RelativeLayout>
