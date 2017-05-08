@@ -55,9 +55,9 @@
 		android:layout_alignTop="@+id/imagem_list"
 		android:layout_toRightOf="@+id/imagem_list"
 		android:text="Rihanna Love the way lie"
-		android:typeface="sans"
 		android:textSize="15dip"
-		android:textStyle="bold"/>
+		android:textStyle="bold"
+		android:typeface="sans" />
 
 	<!-- Artist Name -->
 	<TextView

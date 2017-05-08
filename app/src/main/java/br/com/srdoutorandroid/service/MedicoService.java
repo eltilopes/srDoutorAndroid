@@ -2,15 +2,12 @@ package br.com.srdoutorandroid.service;
 
 import android.content.Context;
 
-import com.google.gson.reflect.TypeToken;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.srdoutorandroid.model.Medico;
-import br.com.srdoutorandroid.util.JsonUtil;
 import br.com.srdoutorandroid.webservice.endpoint.MedicoEndPoint;
 import br.com.srdoutorandroid.webservice.endpoint.ValidadorCallBack;
-import retrofit.client.Response;
 /**
  * Created by elton on 01/04/2017.
  */
@@ -25,11 +22,15 @@ public class MedicoService extends ValidadorCallBack {
     }
 
     public List<Medico> buscarMedicos() {
-        List<Medico> medicos;
-        Response response = service.listarMedicos( );
-        JsonUtil<List<Medico>> json = new JsonUtil();
-        medicos = json.converteObject(response, new TypeToken<List<Medico>>() {
-        }.getType());
+       // List<Medico> medicos;
+       // Response response = service.listarMedicos( );
+       // JsonUtil<List<Medico>> json = new JsonUtil();
+       // medicos = json.converteObject(response, new TypeToken<List<Medico>>() {}.getType());
+        List<Medico> medicos = new ArrayList<Medico>();
+        Medico medico1 = new Medico(1, "Alberto Roberto", "email@email.com", "CRM315648", "01234567890", "http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png");
+        Medico medico2 = new Medico(2, "Renan Silva", "email@email.com", "CRM315648", "01234567890", "http://www.medical-pe.com.br/wp-content/uploads/2013/09/img-interna-esps-como-sera-medico-futuro.jpg");
+        medicos.add(medico1);
+        medicos.add(medico2);
         return medicos;
     }
 }

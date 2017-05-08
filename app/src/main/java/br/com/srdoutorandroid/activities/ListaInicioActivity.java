@@ -3,11 +3,14 @@ package br.com.srdoutorandroid.activities;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,12 +18,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ import java.util.Locale;
 import br.com.srdoutorandroid.R;
 import br.com.srdoutorandroid.components.customadapter.LazyAdapter;
 import br.com.srdoutorandroid.model.Medico;
+import br.com.srdoutorandroid.util.ToastUtil;
 
 
 /**
@@ -50,7 +53,9 @@ import br.com.srdoutorandroid.model.Medico;
         private ListView listAtendimentos;
         private LazyAdapter adapterImage;
         private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
-
+        private LinearLayout buttonFiltro;
+        private LinearLayout buttonEspecialidade;
+        private LinearLayout buttonCalendario;
         private View mFabButton;
         private View mHeader;
         private SimpleDateFormat dateFormatter;
@@ -70,12 +75,85 @@ import br.com.srdoutorandroid.model.Medico;
                 medicos = (List<Medico>) getIntent().getSerializableExtra("medicos"); //Obtaining data
             }
             setContentView(R.layout.activity_lista_inicio);
+            setButtonFiltro();
+            setButtonEspecialidade();
+            setButtonCalendario();
             setDateTimeField();
-            setListenerOnSpinnerItemSelection();
             setFragmentDrawer();
             setListAtendimentos();
             setImageAppBar();
         }
+
+    private void setButtonCalendario() {
+        View v = findViewById(R.id.button_calendario);
+        buttonCalendario = (LinearLayout) v;
+        buttonCalendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarCalendario();
+            }
+        });
+    }
+
+    private void setButtonFiltro() {
+        View v = findViewById(R.id.button_filtro);
+        buttonFiltro = (LinearLayout) v;
+        buttonFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarCalendario();
+            }
+        });
+    }
+
+    private void setButtonEspecialidade() {
+        View v = findViewById(R.id.button_especialidade);
+        buttonEspecialidade = (LinearLayout) v;
+        buttonEspecialidade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarEspecialidades();
+            }
+        });
+    }
+
+    private void mostrarEspecialidades() {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Especialidades");
+        String[] types = {"Gineco", "Fisio", "Terapeuta", "Terapeuta", "Terapeuta", "Terapeuta"};
+        b.setItems(types, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+                switch(which){
+                    case 0:
+                        ToastUtil.show(ListaInicioActivity.this, "Gineco", ToastUtil.INFORMATION);
+                        break;
+                    case 1:
+                        ToastUtil.show(ListaInicioActivity.this, "Fisio", ToastUtil.INFORMATION);
+                        break;
+                    case 2:
+                        ToastUtil.show(ListaInicioActivity.this, "Terapeuta", ToastUtil.INFORMATION);
+                        break;
+                    case 3:
+                        ToastUtil.show(ListaInicioActivity.this, "Terapeuta", ToastUtil.INFORMATION);
+                        break;
+                    case 4:
+                        ToastUtil.show(ListaInicioActivity.this, "Terapeuta", ToastUtil.INFORMATION);
+                        break;
+                    case 5:
+                        ToastUtil.show(ListaInicioActivity.this, "Terapeuta", ToastUtil.INFORMATION);
+                        break;
+                }
+            }
+
+        });
+
+        b.show();
+
+    }
 
     private void setImageAppBar() {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -85,6 +163,15 @@ import br.com.srdoutorandroid.model.Medico;
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setLogo(R.drawable.logo_branca);
     }
+
+    public void mostrarCalendario() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_calendario);
+        dialog.setTitle(R.string.segunda);
+        dialog.show();
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -136,28 +223,6 @@ import br.com.srdoutorandroid.model.Medico;
             drawerFragment.setDrawerListener(this);
         }
 
-        private void setListenerOnSpinnerItemSelection() {
-            spinnerEspecialidade = (Spinner) findViewById(R.id.spinnerEspecialidade);
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                    R.array.especialidadeArrays, R.layout.spinner_item); //
-            spinnerEspecialidade.setAdapter(adapter);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerEspecialidade.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                String firstItem = String.valueOf(spinnerEspecialidade.getSelectedItem());
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (firstItem.equals(String.valueOf(spinnerEspecialidade.getSelectedItem()))) {
-                    } else {
-                        Toast.makeText(getApplicationContext(), parent.getItemAtPosition(position).toString() + " selecionado!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    //Another interface callback
-                }
-            });
-        }
 
 
         private void setDateTimeField() {
