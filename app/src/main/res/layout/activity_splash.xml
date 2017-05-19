@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TheSplashLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/cor_navegacao_texto_hover">
 
     <ProgressBar
         android:id="@+id/splashProgressBar"
@@ -19,10 +20,14 @@
         android:indeterminate="false"
         android:progressDrawable="@drawable/progress_bar"/>
 
-    <ImageView
-        android:id="@+id/splashImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ImageView>
+
+        <ImageView
+            android:id="@+id/splashImageView"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
     <include layout="@layout/progress_dialog"/>
 </RelativeLayout>

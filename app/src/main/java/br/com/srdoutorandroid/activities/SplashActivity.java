@@ -3,6 +3,7 @@ package br.com.srdoutorandroid.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -44,9 +45,12 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
     private List<Medico> medicos ;
     private Activity splashActivity ;
     private int progressStatus = 0;
-    private int timeSleep = 150;
+    private int timeSleep = 850;
     private int iterador = 10;
     private int iteradorProgress = 5;
+
+    private AnimationDrawable animationDrawable;
+
     @Bind(R.id.splashImageView)
     ImageView splashImageView;
     @Bind(R.id.dialog_progress)
@@ -61,6 +65,7 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         splashActivity = this;
+        animarImagens();
         verificarPrimeiraVezApp();
         Configuration.Builder config = new Configuration.Builder(this);
         config.addModelClasses(Medico.class);
@@ -68,12 +73,22 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
         verificarListaMedicos();
     }
 
+    private void animarImagens() {
+        splashImageView = (ImageView) findViewById(R.id.splashImageView);
+        splashImageView.setVisibility(View.VISIBLE);
+        splashImageView.setImageResource(R.drawable.splash_animation);
+        AnimationDrawable frameAnimation = (AnimationDrawable)splashImageView.getDrawable();
+        frameAnimation.setCallback(splashImageView);
+        frameAnimation.setVisible(true, true);
+        frameAnimation.start();
+    }
+
     private void primeiraVezApp() {
         if(bdController.getPrimeiroAcesso()) {
             bdController.inserePrimeiroAcesso(true);
             direcionarTelaPrimeiraVez();
         }else {
-            splashImageView.setBackgroundResource(R.drawable.splash02);
+            //splashImageView.setBackgroundResource(R.drawable.splash01);
         }
     }
 
@@ -164,7 +179,7 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
     }
 
     private void verificarPrimeiraVezApp() {
-        splashImageView.setBackgroundResource(R.drawable.splash01);
+        //splashImageView.setBackgroundResource(R.drawable.splash1);
         progressBar.setProgress(progressStatus);
         progressBar.setVisibility(View.VISIBLE);
         PrimeiraVezAppLauncher launcher = new PrimeiraVezAppLauncher();
@@ -194,7 +209,7 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
     }
 
     public void direcionarListaMedicos(){
-        Intent intent = new Intent(this, ListaInicioActivity.class);
+        Intent intent = new Intent(this, MedicoCardsActivity.class);
         intent.putExtra("medicos",(Serializable) medicos);
         startActivity(intent);
         finish();
@@ -203,7 +218,7 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
 
     public void carregarListaMedicos() {
         medicos = new ArrayList<Medico>();
-        splashImageView.setBackgroundResource(R.drawable.splash03);
+        //splashImageView.setBackgroundResource(R.drawable.splash3);
         progressBar.setVisibility(View.VISIBLE);
         ProgressDialogAsyncTask task = new ProgressDialogAsyncTask(this, null, this);
         if (!ConexaoUtil.isConexao(getApplicationContext())) {

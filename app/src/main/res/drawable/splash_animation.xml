@@ -1,0 +1,14 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splash_animation"
+    android:oneshot="true">
+        <item android:drawable="@drawable/splash1" android:duration="200" />
+        <item android:drawable="@drawable/splash2" android:duration="200" />
+        <item android:drawable="@drawable/splash3" android:duration="200" />
+        <item android:drawable="@drawable/splash4" android:duration="200" />
+        <item android:drawable="@drawable/splash5" android:duration="200" />
+        <item android:drawable="@drawable/splash6" android:duration="200" />
+        <item android:drawable="@drawable/splash7" android:duration="200" />
+        <item android:drawable="@drawable/splash8" android:duration="200" />
+        <item android:drawable="@drawable/splash9" android:duration="200" />
+        <item android:drawable="@drawable/splash10" android:duration="200" />
+</animation-list>
