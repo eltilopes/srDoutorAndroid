@@ -2,29 +2,143 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:orientation="horizontal" >
 
-    <br.com.srdoutorandroid.util.ScaledLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/card_background_white"
-        android:padding="16dp"
-        app:linear_layout_ratio="0.8" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/card_background_white" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="224dp"
+                    android:layout_margin="4dp"
+                    android:padding="4dp"
+                    android:layout_weight="1" >
 
-            <ImageView
-                android:id="@+id/image"
-                style="@style/ImageViewStyle"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:paddingTop="0dp" />
-        </RelativeLayout>
-    </br.com.srdoutorandroid.util.ScaledLinearLayout>
+                    <ImageView
+                        android:id="@+id/list_item_google_cards_media_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/ImageViewStyle"/>
 
-</LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="8dp" >
+
+                    <br.com.srdoutorandroid.font.RobotoTextView
+                        android:id="@+id/list_item_google_cards_media_artist_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Médico"
+                        android:textColor="@color/cor_navegacao_texto"
+                        android:textSize="24sp"
+                        app:typeface="robotoLight" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <br.com.srdoutorandroid.font.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Birth year: "
+                            android:textColor="@color/cor_navegacao_texto"
+                            android:textSize="12sp"
+                            app:typeface="robotoItalic" />
+
+                        <br.com.srdoutorandroid.font.RobotoTextView
+                            android:id="@+id/list_item_google_cards_media_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1984"
+                            android:textColor="@color/cor_navegacao_texto"
+                            android:textSize="12sp"
+                            app:typeface="robotoItalic" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <br.com.srdoutorandroid.font.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Country: "
+                            android:textColor="@color/cor_navegacao_texto"
+                            android:textSize="12sp"
+                            app:typeface="robotoItalic" />
+
+                        <br.com.srdoutorandroid.font.RobotoTextView
+                            android:id="@+id/list_item_google_cards_media_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Germany"
+                            android:textColor="@color/cor_navegacao_texto"
+                            android:textSize="12sp"
+                            app:typeface="robotoItalic" />
+
+                    </LinearLayout>
+
+                    <br.com.srdoutorandroid.font.RobotoTextView
+                        android:id="@+id/list_item_google_cards_media_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="3"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/lorem_ipsum_long"
+                        android:textColor="@color/cor_navegacao_texto"
+                        android:textSize="12sp"
+                        app:typeface="robotoRegular" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="right|bottom"
+                        android:layout_gravity="right|bottom" >
+
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_like"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_favorite"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_share"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>

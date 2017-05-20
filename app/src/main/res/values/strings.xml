@@ -46,7 +46,11 @@
         <item>Terapeuta</item>
         <item>Geral</item>
     </string-array>
+    <string name="lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
 
+    <string name="material_icon_like">&#xeb03;</string>
+    <string name="material_icon_favorite">&#xe9b6;</string>
+    <string name="material_icon_share">&#xeac0;</string>
     <string name="cd_main_image">main image</string>
     <string name="fontello_heart_empty">&#xe80b;</string>
 </resources>

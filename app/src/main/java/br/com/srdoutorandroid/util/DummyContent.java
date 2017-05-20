@@ -790,22 +790,22 @@ public class DummyContent {
 	public static ArrayList<DummyModel> getDummyModelList() {
 		ArrayList<DummyModel> list = new ArrayList<>();
 
-		list.add(new DummyModel(0, "http://pengaja.com/uiapptemplate/avatars/0.jpg", "Isaac Reid", R.string.fontello_heart_empty));
-		list.add(new DummyModel(1, "http://pengaja.com/uiapptemplate/avatars/1.jpg", "Jason Graham", R.string.fontello_heart_empty));
-		list.add(new DummyModel(2, "http://pengaja.com/uiapptemplate/avatars/2.jpg", "Abigail Ross", R.string.fontello_heart_empty));
-		list.add(new DummyModel(3, "http://pengaja.com/uiapptemplate/avatars/3.jpg", "Justin Rutherford", R.string.fontello_heart_empty));
-		list.add(new DummyModel(4, "http://pengaja.com/uiapptemplate/avatars/4.jpg", "Nicholas Henderson", R.string.fontello_heart_empty));
-		list.add(new DummyModel(5, "http://pengaja.com/uiapptemplate/avatars/5.jpg", "Elizabeth Mackenzie", R.string.fontello_heart_empty));
-		list.add(new DummyModel(6, "http://pengaja.com/uiapptemplate/avatars/6.jpg", "Melanie Ferguson", R.string.fontello_heart_empty));
-		list.add(new DummyModel(7, "http://pengaja.com/uiapptemplate/avatars/7.jpg", "Fiona Kelly", R.string.fontello_heart_empty));
-		list.add(new DummyModel(8, "http://pengaja.com/uiapptemplate/avatars/8.jpg", "Nicholas King", R.string.fontello_heart_empty));
-		list.add(new DummyModel(9, "http://pengaja.com/uiapptemplate/avatars/9.jpg", "Victoria Mitchell", R.string.fontello_heart_empty));
-		list.add(new DummyModel(10, "http://pengaja.com/uiapptemplate/avatars/10.jpg", "Sophie Lyman", R.string.fontello_heart_empty));
-		list.add(new DummyModel(11, "http://pengaja.com/uiapptemplate/avatars/11.jpg", "Carl Ince", R.string.fontello_heart_empty));
-		list.add(new DummyModel(12, "http://pengaja.com/uiapptemplate/avatars/12.jpg", "Michelle Slater", R.string.fontello_heart_empty));
-		list.add(new DummyModel(13, "http://pengaja.com/uiapptemplate/avatars/13.jpg", "Ryan Mathis", R.string.fontello_heart_empty));
-		list.add(new DummyModel(14, "http://pengaja.com/uiapptemplate/avatars/14.jpg", "Julia Grant", R.string.fontello_heart_empty));
-		list.add(new DummyModel(15, "http://pengaja.com/uiapptemplate/avatars/15.jpg", "Hannah Martin", R.string.fontello_heart_empty));
+		list.add(new DummyModel(0, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Denis-e1443555252398-670x500.jpg", "Isaac Reid", R.string.fontello_heart_empty));
+		list.add(new DummyModel(1, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/09/3C9A8134-670x500.jpg", "Jason Graham", R.string.fontello_heart_empty));
+		list.add(new DummyModel(2, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/09/Micaela-e1443555378863-670x500.jpg", "Abigail Ross", R.string.fontello_heart_empty));
+		list.add(new DummyModel(3, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/09/Bruna-Ghetti-670x500.jpg", "Justin Rutherford", R.string.fontello_heart_empty));
+		list.add(new DummyModel(4, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Juliana-670x500.jpg", "Nicholas Henderson", R.string.fontello_heart_empty));
+		list.add(new DummyModel(5, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Renam-e1446166339715-670x500.jpg", "Elizabeth Mackenzie", R.string.fontello_heart_empty));
+		list.add(new DummyModel(6, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Carlos-Renato1-e1485277852602-625x500.jpg", "Melanie Ferguson", R.string.fontello_heart_empty));
+		list.add(new DummyModel(7, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Rafael-Amaral-670x500.jpg", "Fiona Kelly", R.string.fontello_heart_empty));
+		list.add(new DummyModel(8, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Ronie-1-670x500.jpg", "Nicholas King", R.string.fontello_heart_empty));
+		list.add(new DummyModel(9, "http://www.espacopiuvita.com.br/wp-content/uploads/2016/08/20160118_141940-670x500.jpg", "Victoria Mitchell", R.string.fontello_heart_empty));
+		list.add(new DummyModel(10, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Gisele-612x500.jpg", "Sophie Lyman", R.string.fontello_heart_empty));
+		list.add(new DummyModel(11, "http://www.espacopiuvita.com.br/wp-content/uploads/2016/08/IMG-20160719-WA0004-670x500.jpg", "Carl Ince", R.string.fontello_heart_empty));
+		list.add(new DummyModel(12, "http://www.espacopiuvita.com.br/wp-content/uploads/2017/01/Karime-670x500.jpg", "Michelle Slater", R.string.fontello_heart_empty));
+		list.add(new DummyModel(13, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Gisele-612x500.jpg", "Ryan Mathis", R.string.fontello_heart_empty));
+		list.add(new DummyModel(14, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Gisele-612x500.jpg", "Julia Grant", R.string.fontello_heart_empty));
+		list.add(new DummyModel(15, "http://www.espacopiuvita.com.br/wp-content/uploads/2015/08/Gisele-612x500.jpg", "Hannah Martin", R.string.fontello_heart_empty));
 		
 		return list;
 	}

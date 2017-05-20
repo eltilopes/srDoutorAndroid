@@ -45,7 +45,7 @@ public class SplashActivity extends Activity implements ProgressDialogAsyncTask.
     private List<Medico> medicos ;
     private Activity splashActivity ;
     private int progressStatus = 0;
-    private int timeSleep = 850;
+    private int timeSleep = 150;
     private int iterador = 10;
     private int iteradorProgress = 5;
 

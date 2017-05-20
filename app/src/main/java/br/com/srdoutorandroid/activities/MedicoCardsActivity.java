@@ -51,17 +51,21 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
         assert swingBottomInAnimationAdapter.getViewAnimator() != null;
         swingBottomInAnimationAdapter.getViewAnimator().setInitialDelayMillis(
                 INITIAL_DELAY_MILLIS);
+
         listView.setClipToPadding(false);
         listView.setDivider(null);
         Resources r = getResources();
-        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, r.getDisplayMetrics());
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                8, r.getDisplayMetrics());
         listView.setDividerHeight(px);
         listView.setFadingEdgeLength(0);
         listView.setFitsSystemWindows(true);
-        px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, r.getDisplayMetrics());
+        px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12,
+                r.getDisplayMetrics());
         listView.setPadding(px, px, px, px);
         listView.setScrollBarStyle(ListView.SCROLLBARS_OUTSIDE_OVERLAY);
         listView.setAdapter(swingBottomInAnimationAdapter);
+
         setFragmentDrawer();
     }
 
