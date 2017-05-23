@@ -90,6 +90,12 @@
 
 
                 </LinearLayout>
+                <View
+                    android:layout_height="2dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:layout_alignBottom="@+id/actions"
+                    />
             </RelativeLayout>
         </FrameLayout>
     </LinearLayout>

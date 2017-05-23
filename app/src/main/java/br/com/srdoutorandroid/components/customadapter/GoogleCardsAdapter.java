@@ -72,7 +72,7 @@ public class GoogleCardsAdapter extends ArrayAdapter<DummyModel>
         holder.share.setTag(position);
         DummyModel item = getItem(position);
         ImageUtil.displayImage(holder.image, item.getImageURL(), null);
-
+        holder.artistName.setText("La la land");
         return convertView;
     }
 
