@@ -49,9 +49,8 @@ public class GoogleCardsAdapter extends ArrayAdapter<Medico>
                     .findViewById(R.id.list_item_google_cards_media_nome_medico );
             holder.especialidade = (TextView) convertView
                     .findViewById(R.id.list_item_google_cards_media_especialidade);
-
-            holder.country = (TextView) convertView
-                    .findViewById(R.id.list_item_google_cards_media_country);
+            holder.email = (TextView) convertView
+                    .findViewById(R.id.list_item_google_cards_email);
             holder.like = (TextView) convertView
                     .findViewById(R.id.list_item_google_cards_media_like);
             holder.favorite = (TextView) convertView
@@ -73,6 +72,7 @@ public class GoogleCardsAdapter extends ArrayAdapter<Medico>
         ImageUtil.displayImage(holder.image, item.getUrlFoto(), null);
         holder.nomeMedico.setText(item.getNome());
         holder.especialidade.setText(item.getEspecialidade());
+        holder.email.setText(item.getEmail());
         return convertView;
     }
 
@@ -81,7 +81,7 @@ public class GoogleCardsAdapter extends ArrayAdapter<Medico>
         public TextView nomeMedico ;
         public TextView especialidade;
         public TextView text;
-        public TextView country;
+        public TextView email;
         public TextView like;
         public TextView favorite;
         public TextView share;
