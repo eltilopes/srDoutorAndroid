@@ -35,7 +35,7 @@
                     android:padding="8dp" >
 
                     <br.com.srdoutorandroid.font.RobotoTextView
-                        android:id="@+id/list_item_google_cards_media_artist_name"
+                        android:id="@+id/list_item_google_cards_media_nome_medico"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"
@@ -52,19 +52,13 @@
                         <br.com.srdoutorandroid.font.RobotoTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Birth year: "
+                            android:text="Especialidade"
                             android:textColor="@color/cor_navegacao_texto"
                             android:textSize="12sp"
+                            android:id="@+id/list_item_google_cards_media_especialidade"
                             app:typeface="robotoItalic" />
 
-                        <br.com.srdoutorandroid.font.RobotoTextView
-                            android:id="@+id/list_item_google_cards_media_year"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1984"
-                            android:textColor="@color/cor_navegacao_texto"
-                            android:textSize="12sp"
-                            app:typeface="robotoItalic" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -90,16 +84,61 @@
 
                     </LinearLayout>
 
-                    <br.com.srdoutorandroid.font.RobotoTextView
-                        android:id="@+id/list_item_google_cards_media_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="3"
-                        android:layout_marginTop="32dp"
-                        android:text="@string/lorem_ipsum_long"
-                        android:textColor="@color/cor_navegacao_texto"
-                        android:textSize="12sp"
-                        app:typeface="robotoRegular" />
+                    <LinearLayout
+                        android:id="@+id/stars"
+                        android:layout_width="90dp"
+                        android:layout_height="30dp"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:id="@+id/estrela1"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/estrela_vazada"/>
+
+                        <ImageView
+                            android:id="@+id/estrela2"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/estrela_cheia" />
+
+                        <ImageView
+                            android:id="@+id/estrela3"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/estrela_cheia"/>
+
+                        <ImageView
+                            android:id="@+id/estrela4"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/estrela_cheia"/>
+
+                        <ImageView
+                            android:id="@+id/estrela5"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/estrela_cheia"/>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

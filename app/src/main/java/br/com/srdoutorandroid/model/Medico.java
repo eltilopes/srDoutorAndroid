@@ -32,6 +32,9 @@ public class Medico extends Model implements Serializable {
     @Column(name = "urlFoto")
     private String urlFoto;
 
+    @Column(name = "especialidade")
+    private String especialidade;
+
 
     @Override
     public boolean equals(Object o) {
@@ -55,13 +58,14 @@ public class Medico extends Model implements Serializable {
     public Medico() {
     }
 
-    public Medico(Integer id, String nome, String email, String crm, String cpf, String urlFoto) {
+    public Medico(Integer id, String nome, String email, String crm, String cpf, String urlFoto, String especialidade) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.crm = crm;
         this.cpf = cpf;
         this.urlFoto = urlFoto;
+        this.especialidade = especialidade;
     }
     public Integer getIdMedico() { return id; }
 
@@ -105,4 +109,11 @@ public class Medico extends Model implements Serializable {
         this.urlFoto = urlFoto;
     }
 
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
+    }
 }

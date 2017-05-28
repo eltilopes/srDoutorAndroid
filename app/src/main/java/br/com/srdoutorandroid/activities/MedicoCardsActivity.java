@@ -1,6 +1,7 @@
 package br.com.srdoutorandroid.activities;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.res.Resources;
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -27,12 +29,15 @@ import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.SwipeDismis
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.srdoutorandroid.R;
 import br.com.srdoutorandroid.components.customadapter.GoogleCardsAdapter;
 import br.com.srdoutorandroid.model.Medico;
-import br.com.srdoutorandroid.util.DummyContent;
 import br.com.srdoutorandroid.util.ToastUtil;
 
 /**
@@ -50,6 +55,9 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
     private LinearLayout buttonEspecialidade;
     private LinearLayout buttonCalendario;
     private List<Medico> medicos ;
+    private SimpleDateFormat dateFormatter;
+    private DatePickerDialog datePickerDialogConsulta;
+    private ListView listView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -62,6 +70,7 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
         setSuportActionBar();
         setFragmentDrawer();
         setLogoAppBar();
+        setDateTimeField();
     }
 
     private void setListaMedicos() {
@@ -70,10 +79,13 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
             medicos = (List<Medico>) getIntent().getSerializableExtra("medicos"); //Obtaining data
         }
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(MedicoCardsActivity.this));
-        ListView listView = (ListView) findViewById(R.id.list_view);
         medicoCardsActivity = this;
-        mGoogleCardsAdapter = new GoogleCardsAdapter(this,
-                DummyContent.getDummyModelList());
+        mostrarListaMedicos(medicos);
+    }
+
+    private void mostrarListaMedicos(List<Medico> medicos) {
+        listView = (ListView) findViewById(R.id.list_view);
+        mGoogleCardsAdapter = new GoogleCardsAdapter(this,medicos);
         SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(
                 new SwipeDismissAdapter(mGoogleCardsAdapter, this));
         swingBottomInAnimationAdapter.setAbsListView(listView);
@@ -103,7 +115,7 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
         buttonCalendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarCalendario();
+                datePickerDialogConsulta.show();
             }
         });
     }
@@ -133,33 +145,14 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
     private void mostrarEspecialidades() {
         AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setTitle("Especialidades");
-        String[] types = {"Gineco", "Fisio", "Terapeuta", "Terapeuta", "Terapeuta", "Terapeuta"};
+        final String[]  types = {"Ginecologista", "Fisio", "Terapeuta", "Urologista", "Terapeuta", "Terapeuta"};
         b.setItems(types, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                filtrarMedicos(types[which]);
                 dialog.dismiss();
-                switch(which){
-                    case 0:
-                        ToastUtil.show(MedicoCardsActivity.this, "Gineco", ToastUtil.INFORMATION);
-                        break;
-                    case 1:
-                        ToastUtil.show(MedicoCardsActivity.this, "Fisio", ToastUtil.INFORMATION);
-                        break;
-                    case 2:
-                        ToastUtil.show(MedicoCardsActivity.this, "Terapeuta", ToastUtil.INFORMATION);
-                        break;
-                    case 3:
-                        ToastUtil.show(MedicoCardsActivity.this, "Terapeuta", ToastUtil.INFORMATION);
-                        break;
-                    case 4:
-                        ToastUtil.show(MedicoCardsActivity.this, "Terapeuta", ToastUtil.INFORMATION);
-                        break;
-                    case 5:
-                        ToastUtil.show(MedicoCardsActivity.this, "Terapeuta", ToastUtil.INFORMATION);
-                        break;
-                }
+                ToastUtil.show(MedicoCardsActivity.this, types[which], ToastUtil.INFORMATION);
             }
 
         });
@@ -167,6 +160,18 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
         b.show();
 
     }
+
+
+    private void filtrarMedicos(final String especialidade) {
+        List<Medico> medicosFiltrados = new ArrayList<Medico>();
+        for (Medico m : medicos){
+            if(m.getEspecialidade().equals(especialidade)){
+                medicosFiltrados.add(m);
+            }
+        }
+        mostrarListaMedicos(medicosFiltrados);
+    }
+
     private void setLogoAppBar() {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.logo);
@@ -192,6 +197,7 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
     private void setSuportActionBar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+        mToolbar.setNavigationIcon(R.drawable.menu);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -205,7 +211,21 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
         getMenuInflater().inflate(R.menu.menu, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        return super.onCreateOptionsMenu(menu);
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    private void setDateTimeField() {
+        dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialogConsulta = new DatePickerDialog(this,R.style.Base_V21_Theme_AppCompat_Light_Dialog, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Override

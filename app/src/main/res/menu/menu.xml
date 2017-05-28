@@ -1,8 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+
     <item android:id="@+id/action_search"
         android:title="Pesquisar"
-        android:icon="@drawable/lupa_branca"
+        android:icon="@drawable/lupa"
         yourapp:showAsAction="ifRoom|collapseActionView"
         yourapp:actionViewClass="android.support.v7.widget.SearchView" />
 </menu>

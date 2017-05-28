@@ -17,15 +17,15 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.com.srdoutorandroid.R;
-import br.com.srdoutorandroid.model.DummyModel;
+import br.com.srdoutorandroid.model.Medico;
 import br.com.srdoutorandroid.util.ImageUtil;
 
-public class GoogleCardsAdapter extends ArrayAdapter<DummyModel>
+public class GoogleCardsAdapter extends ArrayAdapter<Medico>
         implements View.OnClickListener {
 
     private LayoutInflater mInflater;
 
-    public GoogleCardsAdapter(Context context, List<DummyModel> items) {
+    public GoogleCardsAdapter(Context context, List<Medico> items) {
         super(context, 0, items);
         mInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -45,12 +45,11 @@ public class GoogleCardsAdapter extends ArrayAdapter<DummyModel>
             holder = new ViewHolder();
             holder.image = (ImageView) convertView
                     .findViewById(R.id.list_item_google_cards_media_image);
-            holder.artistName = (TextView) convertView
-                    .findViewById(R.id.list_item_google_cards_media_artist_name);
-            holder.year = (TextView) convertView
-                    .findViewById(R.id.list_item_google_cards_media_year);
-            holder.text = (TextView) convertView
-                    .findViewById(R.id.list_item_google_cards_media_text);
+            holder.nomeMedico = (TextView) convertView
+                    .findViewById(R.id.list_item_google_cards_media_nome_medico );
+            holder.especialidade = (TextView) convertView
+                    .findViewById(R.id.list_item_google_cards_media_especialidade);
+
             holder.country = (TextView) convertView
                     .findViewById(R.id.list_item_google_cards_media_country);
             holder.like = (TextView) convertView
@@ -70,16 +69,17 @@ public class GoogleCardsAdapter extends ArrayAdapter<DummyModel>
         holder.like.setTag(position);
         holder.favorite.setTag(position);
         holder.share.setTag(position);
-        DummyModel item = getItem(position);
-        ImageUtil.displayImage(holder.image, item.getImageURL(), null);
-        holder.artistName.setText("La la land");
+        Medico item = getItem(position);
+        ImageUtil.displayImage(holder.image, item.getUrlFoto(), null);
+        holder.nomeMedico.setText(item.getNome());
+        holder.especialidade.setText(item.getEspecialidade());
         return convertView;
     }
 
     private static class ViewHolder {
         public ImageView image;
-        public TextView artistName;
-        public TextView year;
+        public TextView nomeMedico ;
+        public TextView especialidade;
         public TextView text;
         public TextView country;
         public TextView like;

@@ -27,8 +27,8 @@ public class MedicoService extends ValidadorCallBack {
        // JsonUtil<List<Medico>> json = new JsonUtil();
        // medicos = json.converteObject(response, new TypeToken<List<Medico>>() {}.getType());
         List<Medico> medicos = new ArrayList<Medico>();
-        Medico medico1 = new Medico(1, "Alberto Roberto", "email@email.com", "CRM315648", "01234567890", "http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png");
-        Medico medico2 = new Medico(2, "Renan Silva", "email@email.com", "CRM315648", "01234567890", "http://www.medical-pe.com.br/wp-content/uploads/2013/09/img-interna-esps-como-sera-medico-futuro.jpg");
+        Medico medico1 = new Medico(1, "Aline Alef", "email@email.com", "CRM315648", "01234567890", "http://www.unimedjf.coop.br/novosite/Imagens/Site/imagemDestaqueDownloadGuiaMedico.png","Ginecologista");
+        Medico medico2 = new Medico(2, "Renan Silva", "email@email.com", "CRM315648", "01234567890", "http://www.medical-pe.com.br/wp-content/uploads/2013/09/img-interna-esps-como-sera-medico-futuro.jpg","Urologista");
         medicos.add(medico1);
         medicos.add(medico2);
         return medicos;
