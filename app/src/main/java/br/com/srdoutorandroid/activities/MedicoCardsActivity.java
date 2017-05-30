@@ -54,6 +54,7 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
     private LinearLayout buttonFiltro;
     private LinearLayout buttonEspecialidade;
     private LinearLayout buttonCalendario;
+    private LinearLayout layoutButtonCalendario;
     private List<Medico> medicos ;
     private SimpleDateFormat dateFormatter;
     private DatePickerDialog datePickerDialogConsulta;
@@ -112,12 +113,14 @@ public class MedicoCardsActivity extends ActionBarActivity implements OnDismissC
     private void setButtonCalendario() {
         View v = findViewById(R.id.button_calendario);
         buttonCalendario = (LinearLayout) v;
+        layoutButtonCalendario = (LinearLayout) v.findViewById(R.id.layout_button_calendario);
         buttonCalendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 datePickerDialogConsulta.show();
             }
         });
+
     }
 
     private void setButtonFiltro() {

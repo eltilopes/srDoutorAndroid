@@ -33,17 +33,31 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:padding="8dp" >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                        <br.com.srdoutorandroid.font.RobotoTextView
+                            android:id="@+id/list_item_google_cards_media_nome_medico"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:text="Médico"
+                            android:textColor="@color/cor_navegacao_texto"
+                            android:textSize="24sp"
+                            app:typeface="robotoLight" />
 
-                    <br.com.srdoutorandroid.font.RobotoTextView
-                        android:id="@+id/list_item_google_cards_media_nome_medico"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="10dp"
-                        android:text="Médico"
-                        android:textColor="@color/cor_navegacao_texto"
-                        android:textSize="24sp"
-                        app:typeface="robotoLight" />
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_favorite"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="26dp" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -134,40 +148,60 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:gravity="right|bottom"
-                        android:layout_gravity="right|bottom" >
+                        android:layout_height="match_parent"
+                        android:gravity="left|bottom"
+                        android:layout_gravity="left|bottom" >
 
                         <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
-                            android:id="@+id/list_item_google_cards_media_like"
+                            android:id="@+id/list_item_google_cards_media_like_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
                             android:padding="8dp"
-                            android:text="@string/material_icon_like"
+                            android:text="@string/material_icon_star_border"
                             android:textColor="@color/colorAccent"
                             android:textSize="16dp" />
 
                         <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
-                            android:id="@+id/list_item_google_cards_media_favorite"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="8dp"
-                            android:padding="8dp"
-                            android:text="@string/material_icon_favorite"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="16dp" />
-
-                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
-                            android:id="@+id/list_item_google_cards_media_share"
+                            android:id="@+id/list_item_google_cards_media_like_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="0dp"
                             android:padding="8dp"
-                            android:text="@string/material_icon_share"
+                            android:text="@string/material_icon_star_border"
                             android:textColor="@color/colorAccent"
                             android:textSize="16dp" />
+
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_like_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_star_half"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_like_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_star"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+
+                        <br.com.srdoutorandroid.font.MaterialDesignIconsTextView
+                            android:id="@+id/list_item_google_cards_media_like_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:padding="8dp"
+                            android:text="@string/material_icon_star"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16dp" />
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

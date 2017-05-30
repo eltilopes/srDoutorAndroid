@@ -3,7 +3,7 @@
 
     <item android:id="@+id/action_search"
         android:title="Pesquisar"
-        android:icon="@drawable/lupa"
+        android:icon="@drawable/ic_lupa"
         yourapp:showAsAction="ifRoom|collapseActionView"
         yourapp:actionViewClass="android.support.v7.widget.SearchView" />
 </menu>

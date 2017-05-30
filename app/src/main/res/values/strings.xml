@@ -51,6 +51,9 @@
     <string name="material_icon_like">&#xeb03;</string>
     <string name="material_icon_favorite">&#xe9b6;</string>
     <string name="material_icon_share">&#xeac0;</string>
+    <string name="material_icon_star">&#xE8CF;</string>
+    <string name="material_icon_star_border">&#xe83a;</string>
+    <string name="material_icon_star_half">&#xe839;</string>
     <string name="cd_main_image">main image</string>
     <string name="fontello_heart_empty">&#xe80b;</string>
 

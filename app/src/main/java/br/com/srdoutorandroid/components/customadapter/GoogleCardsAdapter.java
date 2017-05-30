@@ -52,14 +52,11 @@ public class GoogleCardsAdapter extends ArrayAdapter<Medico>
             holder.email = (TextView) convertView
                     .findViewById(R.id.list_item_google_cards_email);
             holder.like = (TextView) convertView
-                    .findViewById(R.id.list_item_google_cards_media_like);
+                    .findViewById(R.id.list_item_google_cards_media_like_1);
             holder.favorite = (TextView) convertView
                     .findViewById(R.id.list_item_google_cards_media_favorite);
-            holder.share = (TextView) convertView
-                    .findViewById(R.id.list_item_google_cards_media_share);
             holder.like.setOnClickListener(this);
             holder.favorite.setOnClickListener(this);
-            holder.share.setOnClickListener(this);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -67,7 +64,6 @@ public class GoogleCardsAdapter extends ArrayAdapter<Medico>
 
         holder.like.setTag(position);
         holder.favorite.setTag(position);
-        holder.share.setTag(position);
         Medico item = getItem(position);
         ImageUtil.displayImage(holder.image, item.getUrlFoto(), null);
         holder.nomeMedico.setText(item.getNome());
@@ -92,17 +88,13 @@ public class GoogleCardsAdapter extends ArrayAdapter<Medico>
         // TODO Auto-generated method stub
         int possition = (Integer) v.getTag();
         switch (v.getId()) {
-            case R.id.list_item_google_cards_media_like:
+            case R.id.list_item_google_cards_media_like_1:
                 // click on share button
                 Toast.makeText(getContext(), "Like " + possition, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.list_item_google_cards_media_favorite:
                 // click on share button
                 Toast.makeText(getContext(), "Favorite " + possition, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.list_item_google_cards_media_share:
-                // click on share button
-                Toast.makeText(getContext(), "Share " + possition, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
